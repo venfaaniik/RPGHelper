@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QApplication>
+
+#include "myudp.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +19,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    QList<QLineEdit*> getList();
+    QString getBaseStat(QLineEdit* le);
+    QString getModifiers();
+    QString sendToBot();
+
+private slots:
+    void onSkillClicked();
+    void copyToClipboard();
+
 private:
     Ui::MainWindow *ui;
+    MyUDP m;
 };
 #endif // MAINWINDOW_H
