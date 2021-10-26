@@ -23,10 +23,12 @@ public:
     QString getBaseStat(QLineEdit* le);
     QString getModifiers();
     QString sendToBot();
+    QString resetLuck();
 
 private slots:
     void onSkillClicked();
     void copyToClipboard();
+    void healthChanged();
 
 private:
     Ui::MainWindow *ui;
