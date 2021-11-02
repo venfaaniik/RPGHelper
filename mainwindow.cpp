@@ -3,6 +3,8 @@
 
 #include <QtCore>
 #include <QClipboard>
+#include <QFileDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,7 +20,14 @@ MainWindow::MainWindow(QWidget *parent)
         pb->setStyleSheet("Text-align:left");
     }
     connect(ui->CopyToClipBoard, SIGNAL(clicked()), this, SLOT(copyToClipboard()));
-    connect(ui->value_health, SIGNAL(valueChanged(int)), this, SLOT(healthChanged()));
+    //connect(ui->value_health, SIGNAL(valueChanged(int)), this, SLOT(healthChanged()));
+    connect(ui->ResetLuck, SIGNAL(clicked()), this, SLOT(resetLuck()));
+    connect(ui->dice_d10, SIGNAL(clicked()), this, SLOT(basicDice()));
+    connect(ui->dice_d20, SIGNAL(clicked()), this, SLOT(basicDice()));
+    connect(ui->dice_d50, SIGNAL(clicked()), this, SLOT(basicDice()));
+    connect(ui->dice_d100, SIGNAL(clicked()), this, SLOT(basicDice()));
+
+    //connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(saveTo()));
 }
 
 MainWindow::~MainWindow()
@@ -36,7 +45,7 @@ QString MainWindow::getBaseStat(QLineEdit* le)
 {
     QString value;
     QString parent = le->parentWidget()->objectName();
-    qDebug() << parent;
+    //qDebug() << parent;
 
     //holyfuck jos jollain on parempi tapa tähä nii voi jakaa
     //a little if-mess, as a treat
@@ -86,16 +95,18 @@ void MainWindow::onSkillClicked()
     QObject *senderObj = sender(); // This will give Sender object
     QString senderObjName = senderObj->objectName();
     QString skillName = (senderObjName + "_Value");
-    QString attributeName = ("value_current" + senderObjName);
+    QString attributeName = ("value_" + senderObjName);
+    //QString dice = ("dice_" + senderObjName);
     qDebug() << "Button: " << senderObjName;
 
     QList<QLineEdit*> list = getList();
 
     foreach (QLineEdit* le, list) {
        if (le->objectName() == attributeName) {
-            qDebug() << "Value: " << le->text();
+           qDebug() << "Value: " << le->text();
             ui->Commandline->setText("!r " + le->text() + " + 1d10e1e10" + getModifiers());
             return;
+
        } else if (le->objectName() == skillName) {
            qDebug() << "Value: " << le->text();
            if (le->text() != nullptr) {
@@ -120,6 +131,8 @@ void MainWindow::copyToClipboard()
 
 void MainWindow::healthChanged()
 {
+    //TECHNICALLY WE DO NOT NEED THIS AS ALL THE MINUSES ARE ALREADY INCLUDED IN THE ROLL WHEN HEALTH CHANGES
+    //TODO ONLY IF GOT EXTRA TIME.
     int value = 0;
     int result;
     QList<QLineEdit*> list = getList();
@@ -127,9 +140,11 @@ void MainWindow::healthChanged()
     foreach (QLineEdit* le, list) {
         QString parent = le->parentWidget()->objectName();
         if (parent == "currentStats") {
-            value = le->text().toInt();
+            //value = le->text().toInt();
+            qDebug() << le->objectName();
+            value = 0;
             result = value - (-1*(ui->value_health->value() - 5));
-            qDebug() << le->objectName() << " + " << le->text();
+            //qDebug() << le->objectName() << " + " << le->text();
             le->setText(QString::number(result));
         }
     }
@@ -138,6 +153,44 @@ void MainWindow::healthChanged()
     //result = value - (-1*(ui->value_health->value() - 5));
 
     //ui->value_currentInt->setText(QString::number(result));
+}
+
+void MainWindow::resetLuck()
+{
+    int luck = ui->value_currentLuck->text().toInt();
+    ui->value_luck->setValue(luck);
+}
+
+void MainWindow::saveTo()
+{
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Save Character Sheet"), "",
+                                                    tr("Character Sheet (*.txt);;All Files(*)"));
+    if (fileName.isEmpty())
+        return;
+    else {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::information(this, tr("Unable to open file."), file.errorString());
+            return;
+        }
+        QDataStream out(&file);
+        out.setVersion(QDataStream::Qt_DefaultCompiledVersion);
+        out << savingValues;
+    }
+
+}
+
+void MainWindow::loadFrom()
+{
+
+}
+
+void MainWindow::basicDice()
+{
+    QString dice = ((QPushButton*)sender())->text();
+    ui->Commandline->setText("!r " + dice);
+    //ui->Commandline->setText("!r " + " + 1d10e1e10");
 }
 
 QString MainWindow::sendToBot()

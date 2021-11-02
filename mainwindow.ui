@@ -2319,7 +2319,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>14</string>
+        <string>13</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -3382,7 +3382,7 @@
          </palette>
         </property>
         <property name="text">
-         <string>14</string>
+         <string>13</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -6369,6 +6369,68 @@
      </attribute>
     </widget>
    </widget>
+   <widget class="QWidget" name="group_basic" native="true">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>460</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <widget class="QPushButton" name="dice_d10">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1d10</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="dice_d20">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>0</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1d20</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="dice_d100">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>0</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1d100</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="dice_d50">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>0</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>1d50</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -6398,6 +6460,9 @@
   <action name="actionSave">
    <property name="text">
     <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save values to a file</string>
    </property>
   </action>
  </widget>

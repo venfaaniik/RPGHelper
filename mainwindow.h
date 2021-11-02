@@ -23,15 +23,19 @@ public:
     QString getBaseStat(QLineEdit* le);
     QString getModifiers();
     QString sendToBot();
-    QString resetLuck();
 
 private slots:
     void onSkillClicked();
     void copyToClipboard();
     void healthChanged();
+    void resetLuck();
+    void saveTo();
+    void loadFrom();
+    void basicDice();
 
 private:
     Ui::MainWindow *ui;
     MyUDP m;
+    QMap<QString, QString> savingValues;
 };
 #endif // MAINWINDOW_H
