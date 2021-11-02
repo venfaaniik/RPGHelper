@@ -41,19 +41,19 @@ QString MainWindow::getBaseStat(QLineEdit* le)
     //holyfuck jos jollain on parempi tapa tähä nii voi jakaa
     //a little if-mess, as a treat
     if (parent == "Group_INTELLIGENCE"){
-        return value = ui->value_currentInt->text();
+        return value = ui->value_Int->text();
     } else if (parent == "Group_REFLEX"){
-        return value = ui->value_currentReflex->text();
+        return value = ui->value_Reflex->text();
     } else if (parent == "Group_DEXTERITY"){
-        return value = ui->value_currentDexterity->text();
+        return value = ui->value_Dexterity->text();
     } else if (parent == "Group_BODY"){
-        return value = ui->value_currentBody->text();
+        return value = ui->value_Body->text();
     } else if (parent == "Group_EMPATHY"){
-        return value = ui->value_currentEmpathy->text();
+        return value = ui->value_Empathy->text();
     } else if (parent == "Group_CRAFTING"){
-        return value = ui->value_currentCrafting2->text();
+        return value = ui->value_Crafting->text();
     } else if (parent == "Group_WILL"){
-        return value = ui->value_currentWill->text();
+        return value = ui->value_Will->text();
     }
     return "error";
 }
@@ -120,21 +120,16 @@ void MainWindow::copyToClipboard()
 
 void MainWindow::healthChanged()
 {
-    QObject *senderObj = sender(); // This will give Sender object
-    QString senderObjName = senderObj->objectName();
-    qDebug() << senderObjName;
-    QList<QLineEdit*> list = getList();
-    //QList<QLineEdit*> attributeList;
-
-    QString attributeName = ("base_" + senderObjName);
-
     int value = 0;
     int result;
+    QList<QLineEdit*> list = getList();
 
     foreach (QLineEdit* le, list) {
-        if (le->objectName() == attributeName) {
+        QString parent = le->parentWidget()->objectName();
+        if (parent == "currentStats") {
             value = le->text().toInt();
             result = value - (-1*(ui->value_health->value() - 5));
+            qDebug() << le->objectName() << " + " << le->text();
             le->setText(QString::number(result));
         }
     }
