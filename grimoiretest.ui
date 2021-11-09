@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Grimoiretest</class>
+ <widget class="QMainWindow" name="Grimoiretest">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>240</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>uwu</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="spellTable">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>341</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+    <row>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Description</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Die?</string>
+     </property>
+    </column>
+    <item row="0" column="0">
+     <property name="text">
+      <string>fireball</string>
+     </property>
+    </item>
+    <item row="0" column="1">
+     <property name="text">
+      <string>it go boom</string>
+     </property>
+    </item>
+    <item row="0" column="2">
+     <property name="text">
+      <string>yes</string>
+     </property>
+    </item>
+    <item row="1" column="0">
+     <property name="text">
+      <string>heal</string>
+     </property>
+    </item>
+    <item row="1" column="1">
+     <property name="text">
+      <string>hitpoints go brr</string>
+     </property>
+    </item>
+    <item row="1" column="2">
+     <property name="text">
+      <string>no</string>
+     </property>
+    </item>
+    <item row="2" column="0">
+     <property name="text">
+      <string>portal</string>
+     </property>
+    </item>
+    <item row="2" column="1">
+     <property name="text">
+      <string>yaa yeet</string>
+     </property>
+    </item>
+    <item row="2" column="2">
+     <property name="text">
+      <string>possible</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="plus">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>30</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>+</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="minus">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>60</y>
+      <width>21</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

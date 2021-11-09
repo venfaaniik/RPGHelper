@@ -9,16 +9,22 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+TARGET = mainwindow
+TEMPLATE = app
+
 SOURCES += \
+    grimoiretest.cpp \
     main.cpp \
     mainwindow.cpp \
     myudp.cpp
 
 HEADERS += \
+    grimoiretest.h \
     mainwindow.h \
     myudp.h
 
 FORMS += \
+    grimoiretest.ui \
     mainwindow.ui
 
 # Default rules for deployment.

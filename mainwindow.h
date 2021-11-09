@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QApplication>
+#include "grimoiretest.h"
 
 #include "myudp.h"
 
@@ -33,8 +34,12 @@ private slots:
     void loadFrom();
     void basicDice();
 
+    void changeWindow();
+    void showGrimoire();
+
 private:
     Ui::MainWindow *ui;
+    Grimoiretest *grimoire;
     MyUDP m;
     QMap<QString, QString> savingValues;
 };

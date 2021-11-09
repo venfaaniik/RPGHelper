@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>626</width>
-    <height>617</height>
+    <width>625</width>
+    <height>615</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>625</width>
+    <height>615</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>625</width>
+    <height>615</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>May the rngesus be on your side</string>
@@ -386,11 +398,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Deduction_Value">
@@ -402,11 +417,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Education_Value">
@@ -421,11 +439,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="ElderSpeech_Value">
@@ -440,11 +461,14 @@
       <property name="text">
        <string>4</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="LanguageDwarven_Value">
@@ -456,11 +480,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="LanguageSkellige_Value">
@@ -475,11 +502,14 @@
       <property name="text">
        <string>2</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="SocialEtiquette_Value">
@@ -491,11 +521,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Streetwise_Value">
@@ -507,11 +540,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Teaching_Value">
@@ -526,11 +562,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Business_Value">
@@ -542,11 +581,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Tactics_Value">
@@ -558,11 +600,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="MonsterLore_Value">
@@ -574,11 +619,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="LanguageNordling_Value">
@@ -590,11 +638,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="LanguageNilfgaardian_Value">
@@ -609,11 +660,14 @@
       <property name="text">
        <string>2</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="WildernessSurvival_Value">
@@ -625,11 +679,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -734,11 +791,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Athletics_Value">
@@ -753,11 +813,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Crossbpw_Value">
@@ -769,11 +832,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="SleightOfHand_Value">
@@ -785,11 +851,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Stealth_Value">
@@ -804,11 +873,14 @@
       <property name="text">
        <string>3</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -945,11 +1017,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Crafting_Value">
@@ -964,11 +1039,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Disguise_Value">
@@ -980,11 +1058,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="TrapCrafting_Value">
@@ -996,11 +1077,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="PickLock_Value">
@@ -1012,11 +1096,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Forgery_Value">
@@ -1031,11 +1118,14 @@
       <property name="text">
        <string>2</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="FirstAid_Value">
@@ -1047,11 +1137,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -1111,11 +1204,14 @@
       <property name="text">
        <string>2</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Endurance_Value">
@@ -1130,11 +1226,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -1287,11 +1386,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="DodgeEscape_Value">
@@ -1306,11 +1408,14 @@
       <property name="text">
        <string>2</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Melee_Value">
@@ -1322,11 +1427,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Riding_Value">
@@ -1341,11 +1449,14 @@
       <property name="text">
        <string>3</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Sailing_Value">
@@ -1357,11 +1468,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="SmallBlades_Value">
@@ -1376,11 +1490,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="StaffSpear_Value">
@@ -1392,11 +1509,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Swordsmanship_Value">
@@ -1408,11 +1528,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -1600,11 +1723,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Deceit_Value">
@@ -1619,11 +1745,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="FineArts_Value">
@@ -1635,11 +1764,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Gambling_Value">
@@ -1654,11 +1786,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="GroomingAndStyle_Value">
@@ -1670,11 +1805,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="HumanPerception_Value">
@@ -1686,11 +1824,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Leadership_Value">
@@ -1702,11 +1843,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Performance_Value">
@@ -1718,11 +1862,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Persuasion_Value">
@@ -1737,11 +1884,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Seduction_Value">
@@ -1756,11 +1906,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -1897,11 +2050,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="HexWeaving_Value">
@@ -1916,11 +2072,14 @@
       <property name="text">
        <string>1</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="Intimidation_Value">
@@ -1932,11 +2091,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="SpellCasting_Value">
@@ -1951,11 +2113,14 @@
       <property name="text">
        <string>4</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="ResistMagic_Value">
@@ -1970,11 +2135,14 @@
       <property name="text">
        <string>4</string>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="ResistCoercion_Value">
@@ -1986,11 +2154,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLineEdit" name="RitualCrafting_Vvalue">
@@ -2002,11 +2173,14 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="frame">
+       <bool>true</bool>
+      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
       <property name="readOnly">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
@@ -2245,11 +2419,14 @@
        <property name="text">
         <string>13</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Reflex">
@@ -2264,11 +2441,14 @@
        <property name="text">
         <string>9</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Dexterity">
@@ -2283,11 +2463,14 @@
        <property name="text">
         <string>9</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Speed">
@@ -2302,11 +2485,14 @@
        <property name="text">
         <string>13</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Will">
@@ -2321,11 +2507,14 @@
        <property name="text">
         <string>13</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Crafting">
@@ -2340,11 +2529,14 @@
        <property name="text">
         <string>7</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Empathy">
@@ -2359,11 +2551,14 @@
        <property name="text">
         <string>9</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Body">
@@ -2378,11 +2573,14 @@
        <property name="text">
         <string>6</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLineEdit" name="value_Luck">
@@ -2397,11 +2595,14 @@
        <property name="text">
         <string>9</string>
        </property>
+       <property name="frame">
+        <bool>true</bool>
+       </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QWidget" name="currentStats" native="true">
@@ -2867,11 +3068,14 @@
         <property name="text">
          <string>13</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentBody">
@@ -3328,11 +3532,14 @@
         <property name="text">
          <string>6</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentWill">
@@ -3384,11 +3591,14 @@
         <property name="text">
          <string>13</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentCrafting2">
@@ -3845,11 +4055,14 @@
         <property name="text">
          <string>7</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentEmpathy">
@@ -4306,11 +4519,14 @@
         <property name="text">
          <string>9</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentDexterity">
@@ -4767,11 +4983,14 @@
         <property name="text">
          <string>9</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentReflex">
@@ -5228,11 +5447,14 @@
         <property name="text">
          <string>9</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentInt">
@@ -5689,11 +5911,14 @@
         <property name="text">
          <string>13</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="value_currentLuck">
@@ -6150,11 +6375,14 @@
         <property name="text">
          <string>12</string>
         </property>
+        <property name="frame">
+         <bool>true</bool>
+        </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </widget>
@@ -6334,6 +6562,12 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="minimum">
+        <number>-99</number>
+       </property>
+       <property name="stepType">
+        <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+       </property>
       </widget>
       <widget class="QLabel" name="label_otherBuffs">
        <property name="geometry">
@@ -6437,7 +6671,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>626</width>
+     <width>625</width>
      <height>20</height>
     </rect>
    </property>
@@ -6446,6 +6680,8 @@
      <string>Stats</string>
     </property>
     <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionGrimoire"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -6463,6 +6699,11 @@
    </property>
    <property name="toolTip">
     <string>Save values to a file</string>
+   </property>
+  </action>
+  <action name="actionGrimoire">
+   <property name="text">
+    <string>Grimoire</string>
    </property>
   </action>
  </widget>

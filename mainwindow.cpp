@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    grimoire = new Grimoiretest();
+
     //TODO: FIND OUT HOW TO IGNORE OTHER THAN SKILL BUTTONS HERE
     QList<QPushButton*> pbList = findChildren<QPushButton*> (QString(), Qt::FindChildrenRecursively);
     foreach (QPushButton* pb, pbList) {
@@ -22,12 +24,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->CopyToClipBoard, SIGNAL(clicked()), this, SLOT(copyToClipboard()));
     //connect(ui->value_health, SIGNAL(valueChanged(int)), this, SLOT(healthChanged()));
     connect(ui->ResetLuck, SIGNAL(clicked()), this, SLOT(resetLuck()));
-    connect(ui->dice_d10, SIGNAL(clicked()), this, SLOT(basicDice()));
-    connect(ui->dice_d20, SIGNAL(clicked()), this, SLOT(basicDice()));
-    connect(ui->dice_d50, SIGNAL(clicked()), this, SLOT(basicDice()));
+    connect(ui->dice_d10,  SIGNAL(clicked()), this, SLOT(basicDice()));
+    connect(ui->dice_d20,  SIGNAL(clicked()), this, SLOT(basicDice()));
+    connect(ui->dice_d50,  SIGNAL(clicked()), this, SLOT(basicDice()));
     connect(ui->dice_d100, SIGNAL(clicked()), this, SLOT(basicDice()));
 
-    //connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(saveTo()));
+    connect(ui->actionGrimoire, SIGNAL(triggered()), this, SLOT(showGrimoire()));
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +39,7 @@ MainWindow::~MainWindow()
 
 QList<QLineEdit *> MainWindow::getList()
 {
+    // Just to get the list of buttons kek
     QList<QLineEdit*> leList = findChildren<QLineEdit*> (QString(), Qt::FindChildrenRecursively);
     return leList;
 }
@@ -44,8 +47,7 @@ QList<QLineEdit *> MainWindow::getList()
 QString MainWindow::getBaseStat(QLineEdit* le)
 {
     QString value;
-    QString parent = le->parentWidget()->objectName();
-    //qDebug() << parent;
+    QString parent = le->parentWidget()->objectName(); // get the parent-object name for checks
 
     //holyfuck jos jollain on parempi tapa tähä nii voi jakaa
     //a little if-mess, as a treat
@@ -70,46 +72,57 @@ QString MainWindow::getBaseStat(QLineEdit* le)
 QString MainWindow::getModifiers()
 {
     QString value;
+
+    //POSITIVES
+    // if any other unnamed buffs are to be applied
+    if (ui->Other_Buffs->value() > 0) {
+        qDebug() << "Other Buffs: " << ui->Other_Buffs->value();
+        value = " + " + QString::number(ui->Other_Buffs->value());
+    }
+
+    // if the player if well fed AND/OR well rested
     if (ui->WeddFed->isChecked() && ui->WellRested->isChecked() == true) {
-        value = " + 2 [WellFed | WellRested]";
+        value = value + " + 2 [WellFed | WellRested]";
     } else if (ui->WeddFed->isChecked() == true) {
-        value = " + 1 [WellFed]";
+        value = value + " + 1 [WellFed]";
     } else if (ui->WellRested->isChecked() == true) {
         value = value + " + 1 [WellRested]";
     }
 
-    if (ui->Other_Buffs->value() != 0) {
-        value = value + " + " + ui->Other_Buffs->text();
+    //NEGATIVES
+    // if any other negatives are to be applied
+    if (ui->Other_Buffs->value() < 0) {
+        qDebug() << "Other Buffs: " << ui->Other_Buffs->value();
+        value = value + " - " + QString::number(-1 * ui->Other_Buffs->value());
     }
 
+    // if the player is damaged and wounded-penalty is to be applied
     if (ui->value_health->value() < 5) {
         int helth = -1 *(ui->value_health->value() - 5);
         value = value + " - " + QString::number(helth);
     }
-
     return value;
 }
 
 void MainWindow::onSkillClicked()
 {
-    QObject *senderObj = sender(); // This will give Sender object
+    //Get sender-object for further operations
+    QObject *senderObj = sender();
     QString senderObjName = senderObj->objectName();
+
+    // we'll assume it's both skill and attribute and later check if such thing exists
     QString skillName = (senderObjName + "_Value");
     QString attributeName = ("value_" + senderObjName);
-    //QString dice = ("dice_" + senderObjName);
-    qDebug() << "Button: " << senderObjName;
 
+    // get the list to go through
     QList<QLineEdit*> list = getList();
-
     foreach (QLineEdit* le, list) {
-       if (le->objectName() == attributeName) {
-           qDebug() << "Value: " << le->text();
+       if (le->objectName() == attributeName) { // if it's an attribute
             ui->Commandline->setText("!r " + le->text() + " + 1d10e1e10" + getModifiers());
             return;
 
-       } else if (le->objectName() == skillName) {
-           qDebug() << "Value: " << le->text();
-           if (le->text() != nullptr) {
+       } else if (le->objectName() == skillName) { // if it's a skill
+           if (le->text() != nullptr) { // if skill has any points allocated
                ui->Commandline->setText("!r " + getBaseStat(le) + " + " + le->text() + " + 1d10e1e10" + getModifiers());
                return;
            }
@@ -119,6 +132,7 @@ void MainWindow::onSkillClicked()
     }
 }
 
+// copy the whole string to clipboard to paste it on Discord.
 void MainWindow::copyToClipboard()
 {
     QString string = ui->Commandline->text();
@@ -126,6 +140,7 @@ void MainWindow::copyToClipboard()
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(string);
 
+    // an artefact from a time I attempted
     m.sendToFaust(string);
 }
 
@@ -178,7 +193,6 @@ void MainWindow::saveTo()
         out.setVersion(QDataStream::Qt_DefaultCompiledVersion);
         out << savingValues;
     }
-
 }
 
 void MainWindow::loadFrom()
@@ -192,6 +206,23 @@ void MainWindow::basicDice()
     ui->Commandline->setText("!r " + dice);
     //ui->Commandline->setText("!r " + " + 1d10e1e10");
 }
+
+void MainWindow::changeWindow()
+{
+    if(grimoire->isVisible()) {
+        grimoire->hide();
+        this->show();
+    } else {
+        this->hide();
+        grimoire->show();
+    }
+}
+
+void MainWindow::showGrimoire()
+{
+    grimoire->show();
+}
+
 
 QString MainWindow::sendToBot()
 {
