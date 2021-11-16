@@ -51,7 +51,7 @@ QString MainWindow::getBaseStat(QLineEdit* le)
 
     //holyfuck jos jollain on parempi tapa tähä nii voi jakaa
     //a little if-mess, as a treat
-    if (parent == "Group_INTELLIGENCE"){
+    /*if (parent == "Group_INTELLIGENCE"){
         return value = ui->value_Int->text();
     } else if (parent == "Group_REFLEX"){
         return value = ui->value_Reflex->text();
@@ -65,7 +65,7 @@ QString MainWindow::getBaseStat(QLineEdit* le)
         return value = ui->value_Crafting->text();
     } else if (parent == "Group_WILL"){
         return value = ui->value_Will->text();
-    }
+    }*/
     return "error";
 }
 
@@ -175,8 +175,8 @@ void MainWindow::resetLuck()
 {
     //resets luck to the current luck value
     //because l never remember to do this in the session start
-    int luck = ui->value_currentLuck->text().toInt();
-    ui->value_luck->setValue(luck);
+    //int luck = ui->value_currentLuck->text().toInt();
+    //ui->value_luck->setValue(luck);
 }
 
 

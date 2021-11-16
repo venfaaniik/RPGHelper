@@ -30,6 +30,7 @@ void Grimoiretest::addToTable()
 
 void Grimoiretest::removeFromTable()
 {
+    //removes all selected items from the table
      const QList<QTableWidgetItem *> selected = spellTable->selectedItems();
      for (QTableWidgetItem *item : selected) {
          spellTable->removeRow(item->row());

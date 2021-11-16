@@ -22,7 +22,7 @@ void MyUDP::Connect()
         socket->write(textUtf8);
         socket->waitForBytesWritten(1000);
         socket->waitForReadyRead(3000);
-        qDebug() << "Reading: " << socket->bytesAvailable();
+        //qDebug() << "Reading: " << socket->bytesAvailable();
 
         qDebug() << socket->readAll();
 
