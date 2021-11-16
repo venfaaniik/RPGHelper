@@ -1,13 +1,20 @@
 #include "grimoiretest.h"
 #include "ui_grimoiretest.h"
 
+#include <QtCore>
+
 Grimoiretest::Grimoiretest(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Grimoiretest)
 {
     ui->setupUi(this);
 
-    QTableWidget *tableWidget = ui->spellTable;
+    spellTable = ui->spellTable;
+
+    connect(ui->plus, SIGNAL(clicked()), this, SLOT(addToTable()));
+    connect(ui->minus, SIGNAL(clicked()), this, SLOT(removeFromTable()));
+    connect(ui->sort, SIGNAL(clicked()), this, SLOT(sort()));
+
 }
 
 Grimoiretest::~Grimoiretest()
@@ -15,11 +22,21 @@ Grimoiretest::~Grimoiretest()
     delete ui;
 }
 
-void Grimoiretest::addToList()
+void Grimoiretest::addToTable()
 {
+    int row = spellTable->rowCount();
+    spellTable->insertRow(row);
+}
 
-    //ui->spellTable->setItem()
+void Grimoiretest::removeFromTable()
+{
+     const QList<QTableWidgetItem *> selected = spellTable->selectedItems();
+     for (QTableWidgetItem *item : selected) {
+         spellTable->removeRow(item->row());
+     }
+}
 
-    //QTableWidgetItem *newItem = new QTableWidgetItem(tr("%1").arg( (row+1)*(column+1)));
-    //ui->spelltable->setItem(row, column, newItem);
+void Grimoiretest::sort()
+{
+    spellTable->sortItems(0,Qt::AscendingOrder);
 }

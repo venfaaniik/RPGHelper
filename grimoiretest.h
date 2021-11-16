@@ -2,6 +2,7 @@
 #define GRIMOIRETEST_H
 
 #include <QMainWindow>
+#include <qtablewidget.h>
 
 namespace Ui {
 class Grimoiretest;
@@ -16,10 +17,13 @@ public:
     ~Grimoiretest();
 
 public slots:
-    void addToList();
+    void addToTable();
+    void removeFromTable();
+    void sort();
 
 private:
     Ui::Grimoiretest *ui;
+    QTableWidget *spellTable;
 };
 
 #endif // GRIMOIRETEST_H

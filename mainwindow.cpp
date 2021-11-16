@@ -104,6 +104,7 @@ QString MainWindow::getModifiers()
     return value;
 }
 
+//a multitasker.
 void MainWindow::onSkillClicked()
 {
     //Get sender-object for further operations
@@ -140,7 +141,7 @@ void MainWindow::copyToClipboard()
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(string);
 
-    // an artefact from a time I attempted
+    // an artefact from a time I attempted throwing it over network
     m.sendToFaust(string);
 }
 
@@ -172,10 +173,14 @@ void MainWindow::healthChanged()
 
 void MainWindow::resetLuck()
 {
+    //resets luck to the current luck value
+    //because l never remember to do this in the session start
     int luck = ui->value_currentLuck->text().toInt();
     ui->value_luck->setValue(luck);
 }
 
+
+//UHHHH
 void MainWindow::saveTo()
 {
     QString fileName = QFileDialog::getSaveFileName(this,
@@ -195,6 +200,7 @@ void MainWindow::saveTo()
     }
 }
 
+// UHHHHHHHHH
 void MainWindow::loadFrom()
 {
 
@@ -202,13 +208,14 @@ void MainWindow::loadFrom()
 
 void MainWindow::basicDice()
 {
+    //basic dice to throw, d10, d20, d50, d100
     QString dice = ((QPushButton*)sender())->text();
     ui->Commandline->setText("!r " + dice);
-    //ui->Commandline->setText("!r " + " + 1d10e1e10");
 }
 
 void MainWindow::changeWindow()
 {
+    //open grimoire window
     if(grimoire->isVisible()) {
         grimoire->hide();
         this->show();
@@ -220,12 +227,15 @@ void MainWindow::changeWindow()
 
 void MainWindow::showGrimoire()
 {
+    //aaand show it
     grimoire->show();
 }
 
 
 QString MainWindow::sendToBot()
 {
+    //old stuff, it works but discord side didn't want to work.
+    //(bot didn't anwser to bot messages)
     QString string = ui->Commandline->text();
     return string;
 }
