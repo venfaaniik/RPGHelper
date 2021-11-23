@@ -20,6 +20,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void initTables();
+    void setSkill(QString s);
+    QString getSkill();
+
     QList<QLineEdit*> getList();
     QString getBaseStat(QLineEdit* le);
     QString getModifiers();
@@ -27,6 +31,7 @@ public:
 
 private slots:
     void onSkillClicked();
+    void onCellClicked(int index);
     void copyToClipboard();
     void healthChanged();
     void resetLuck();
@@ -42,5 +47,7 @@ private:
     Grimoiretest *grimoire;
     MyUDP m;
     QMap<QString, QString> savingValues;
+
+    QString *skill;
 };
 #endif // MAINWINDOW_H

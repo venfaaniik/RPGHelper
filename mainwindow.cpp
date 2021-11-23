@@ -21,6 +21,10 @@ MainWindow::MainWindow(QWidget *parent)
         connect(pb, SIGNAL(clicked()), this, SLOT(onSkillClicked()));
         pb->setStyleSheet("Text-align:left");
     }
+
+    //init all the tables in main screen
+    initTables();
+
     connect(ui->CopyToClipBoard, SIGNAL(clicked()), this, SLOT(copyToClipboard()));
     //connect(ui->value_health, SIGNAL(valueChanged(int)), this, SLOT(healthChanged()));
     connect(ui->ResetLuck, SIGNAL(clicked()), this, SLOT(resetLuck()));
@@ -30,12 +34,74 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->dice_d100, SIGNAL(clicked()), this, SLOT(basicDice()));
 
     connect(ui->actionGrimoire, SIGNAL(triggered()), this, SLOT(showGrimoire()));
+
+
+    //connect(ui->Table_Will, SIGNAL(cellClicked(int,int)), this, SLOT(onCellClicked(int,int)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::initTables()
+{
+    //this is horrible, this is terrible but it's ok for my needs...
+    int verticalHeader = 112;
+
+    QList<QTableWidget*> tableList = findChildren<QTableWidget*> (QString(), Qt::FindChildrenRecursively);
+    foreach(QTableWidget* tb, tableList) {
+      tb->verticalHeader()->setFixedWidth(verticalHeader);
+      //tb->horizontalHeaderItem(0)->setTextAlignment(Qt::AlignHCenter);
+
+      //just DEBUG, tested centering because not all values are centered, that's one hell of a työmaa
+      for (int i = 0; i < tb->rowCount(); ++i) {
+           QTableWidgetItem *item = tb->item(i,0);
+           if(!item) {
+               item= new QTableWidgetItem();
+               tb->setItem(i,0,item);
+           } else { //honestly, l didn't expect this to work.
+               //to center all the pre-existing table items, could've done this in the editor but l'm lazy
+               QTableWidgetItem *preset = tb->itemAt(i,0);
+               preset->setTextAlignment(Qt::AlignHCenter);
+           }
+           item->setText("");
+           item->setTextAlignment(Qt::AlignHCenter);
+      }
+      ui->retranslateUi(this);
+
+      // lähetääs lambdailee, täl saa clicked name etc...
+      // can be used to get clicked events.
+      auto header = tb->verticalHeader();
+      //QString s = getSkill();
+
+      connect(header, &QHeaderView::sectionClicked, [tb](int index) {
+          QString text = tb->verticalHeaderItem(index)->text();
+          qDebug() << index << " text: " << text << tb->item(index,0)->text();
+          auto getText = [](QTableWidget *tb, int index) -> QString {
+              QString text = tb->item(index,0)->text();
+              return text;
+          };
+          QString s = getText(tb, index);
+          qDebug() << s;
+      });
+
+      //actual connect l want to use
+      //connect(tb->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(onCellClicked(int)));
+    }
+}
+
+void MainWindow::setSkill(QString s)
+{
+    skill = &s;
+}
+
+QString MainWindow::getSkill()
+{
+    return *skill;
+}
+
+
 
 QList<QLineEdit *> MainWindow::getList()
 {
@@ -106,8 +172,9 @@ QString MainWindow::getModifiers()
 
 //a multitasker.
 void MainWindow::onSkillClicked()
-{
-    //Get sender-object for further operations
+{  
+    //Deprecated
+    /*//Get sender-object for further operations
     QObject *senderObj = sender();
     QString senderObjName = senderObj->objectName();
 
@@ -130,7 +197,14 @@ void MainWindow::onSkillClicked()
            ui->Commandline->setText("!r " + getBaseStat(le) + " + 1d10e1e10" + getModifiers());
            return;
        }
-    }
+    }*/
+
+    qDebug() << "boop.";
+}
+
+void MainWindow::onCellClicked(int index)
+{
+    qDebug() << index << "boop.";
 }
 
 // copy the whole string to clipboard to paste it on Discord.
