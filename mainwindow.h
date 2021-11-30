@@ -22,16 +22,17 @@ public:
 
     void initTables();
     void setSkill(QString s);
-    QString getSkill();
+    void onCellClicked(QTableWidget* t, int index);
 
+    QString getSkill();
     QList<QLineEdit*> getList();
-    QString getBaseStat(QLineEdit* le);
+    QList<QTableWidget*> getTables();
+    QString getBaseStat(QTableWidget* t);
     QString getModifiers();
     QString sendToBot();
 
 private slots:
     void onSkillClicked();
-    void onCellClicked(int index);
     void copyToClipboard();
     void healthChanged();
     void resetLuck();
@@ -47,6 +48,7 @@ private:
     Grimoiretest *grimoire;
     MyUDP m;
     QMap<QString, QString> savingValues;
+    QList<QTableWidget*> tableList;
 
     QString *skill;
 };

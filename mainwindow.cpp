@@ -22,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
         pb->setStyleSheet("Text-align:left");
     }
 
-    //init all the tables in main screen
+        //init all the tables in main screen
+    tableList = findChildren<QTableWidget*> (QString(), Qt::FindChildrenRecursively);
     initTables();
 
     connect(ui->CopyToClipBoard, SIGNAL(clicked()), this, SLOT(copyToClipboard()));
@@ -34,9 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->dice_d100, SIGNAL(clicked()), this, SLOT(basicDice()));
 
     connect(ui->actionGrimoire, SIGNAL(triggered()), this, SLOT(showGrimoire()));
-
-
-    //connect(ui->Table_Will, SIGNAL(cellClicked(int,int)), this, SLOT(onCellClicked(int,int)));
+    connect(ui->actionSave, SIGNAL(triggered()), this, SLOT(saveTo()));
 }
 
 MainWindow::~MainWindow()
@@ -46,22 +45,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::initTables()
 {
-    //this is horrible, this is terrible but it's ok for my needs...
+    //this is horrible, this is terrible but it's ok for my needs... hardcoding, blegh.
     int verticalHeader = 112;
+    QList<QTableWidget*> table = getTables();
 
-    QList<QTableWidget*> tableList = findChildren<QTableWidget*> (QString(), Qt::FindChildrenRecursively);
-    foreach(QTableWidget* tb, tableList) {
+    foreach(QTableWidget* tb, table) {
+
+        if(tb->objectName()=="Table_STATS") {
+            verticalHeader = 105;
+            tb->verticalHeader()->setFixedWidth(verticalHeader);
+        }
+
+        //to prevent accidentally resising the headers and it just looks nicer like this.
       tb->verticalHeader()->setFixedWidth(verticalHeader);
-      //tb->horizontalHeaderItem(0)->setTextAlignment(Qt::AlignHCenter);
+      tb->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
-      //just DEBUG, tested centering because not all values are centered, that's one hell of a työmaa
+        // tested centering because not all the table values are centered, that's one hell of a työmaa
       for (int i = 0; i < tb->rowCount(); ++i) {
            QTableWidgetItem *item = tb->item(i,0);
            if(!item) {
                item= new QTableWidgetItem();
                tb->setItem(i,0,item);
            } else { //honestly, l didn't expect this to work.
-               //to center all the pre-existing table items, could've done this in the editor but l'm lazy
+                  //to center all the pre-existing table items, could've done this in the editor but l'm lazy
                QTableWidgetItem *preset = tb->itemAt(i,0);
                preset->setTextAlignment(Qt::AlignHCenter);
            }
@@ -70,24 +76,14 @@ void MainWindow::initTables()
       }
       ui->retranslateUi(this);
 
-      // lähetääs lambdailee, täl saa clicked name etc...
-      // can be used to get clicked events.
+        // horrible, terrible,
+        // mut jostai syyst saan tällä tuon indexin mukaan lol.
       auto header = tb->verticalHeader();
-      //QString s = getSkill();
+      auto getTexts = [tb, this](int index) {
+          this->onCellClicked(tb, index);
+      };
 
-      connect(header, &QHeaderView::sectionClicked, [tb](int index) {
-          QString text = tb->verticalHeaderItem(index)->text();
-          qDebug() << index << " text: " << text << tb->item(index,0)->text();
-          auto getText = [](QTableWidget *tb, int index) -> QString {
-              QString text = tb->item(index,0)->text();
-              return text;
-          };
-          QString s = getText(tb, index);
-          qDebug() << s;
-      });
-
-      //actual connect l want to use
-      //connect(tb->verticalHeader(), SIGNAL(sectionClicked(int)), this, SLOT(onCellClicked(int)));
+      connect(header, &QHeaderView::sectionClicked, getTexts);
     }
 }
 
@@ -105,33 +101,31 @@ QString MainWindow::getSkill()
 
 QList<QLineEdit *> MainWindow::getList()
 {
-    // Just to get the list of buttons kek
+        // Just to get the list of buttons kek
     QList<QLineEdit*> leList = findChildren<QLineEdit*> (QString(), Qt::FindChildrenRecursively);
     return leList;
 }
 
-QString MainWindow::getBaseStat(QLineEdit* le)
+QList<QTableWidget *> MainWindow::getTables()
+{
+    return tableList;
+}
+
+QString MainWindow::getBaseStat(QTableWidget* t)
 {
     QString value;
-    QString parent = le->parentWidget()->objectName(); // get the parent-object name for checks
+    QString parent = t->parentWidget()->objectName(); // get the parent-object name for checks
+    qDebug() << "parent: " << parent;
 
     //holyfuck jos jollain on parempi tapa tähä nii voi jakaa
     //a little if-mess, as a treat
-    /*if (parent == "Group_INTELLIGENCE"){
-        return value = ui->value_Int->text();
-    } else if (parent == "Group_REFLEX"){
-        return value = ui->value_Reflex->text();
-    } else if (parent == "Group_DEXTERITY"){
-        return value = ui->value_Dexterity->text();
-    } else if (parent == "Group_BODY"){
-        return value = ui->value_Body->text();
-    } else if (parent == "Group_EMPATHY"){
-        return value = ui->value_Empathy->text();
-    } else if (parent == "Group_CRAFTING"){
-        return value = ui->value_Crafting->text();
-    } else if (parent == "Group_WILL"){
-        return value = ui->value_Will->text();
-    }*/
+    if      (parent == "Group_INTELLIGENCE") { return value = ui->Table_STATS->item(0,0)->text(); }
+    else if (parent == "Group_DEXTERITY")    { return value = ui->Table_STATS->item(1,0)->text(); }
+    else if (parent == "Group_CRAFTING")     { return value = ui->Table_STATS->item(2,0)->text(); }
+    else if (parent == "Group_BODY")         { return value = ui->Table_STATS->item(3,0)->text(); }
+    else if (parent == "Group_WILL")         { return value = ui->Table_STATS->item(4,0)->text(); }
+    else if (parent == "Group_REFLEX")       { return value = ui->Table_STATS->item(5,0)->text(); }
+    else if (parent == "Group_EMPATHY")      { return value = ui->Table_STATS->item(6,0)->text(); }
     return "error";
 }
 
@@ -139,14 +133,8 @@ QString MainWindow::getModifiers()
 {
     QString value;
 
-    //POSITIVES
-    // if any other unnamed buffs are to be applied
-    if (ui->Other_Buffs->value() > 0) {
-        qDebug() << "Other Buffs: " << ui->Other_Buffs->value();
-        value = " + " + QString::number(ui->Other_Buffs->value());
-    }
-
-    // if the player if well fed AND/OR well rested
+        //POSITIVES
+        // if the player if well fed AND/OR well rested
     if (ui->WeddFed->isChecked() && ui->WellRested->isChecked() == true) {
         value = value + " + 2 [WellFed | WellRested]";
     } else if (ui->WeddFed->isChecked() == true) {
@@ -155,14 +143,20 @@ QString MainWindow::getModifiers()
         value = value + " + 1 [WellRested]";
     }
 
-    //NEGATIVES
-    // if any other negatives are to be applied
+        // if any other unnamed buffs are to be applied
+    if (ui->Other_Buffs->value() > 0) {
+        qDebug() << "Other Buffs: " << ui->Other_Buffs->value();
+        value = " + " + QString::number(ui->Other_Buffs->value());
+    }
+
+        //NEGATIVES
+        // if any other negatives are to be applied
     if (ui->Other_Buffs->value() < 0) {
         qDebug() << "Other Buffs: " << ui->Other_Buffs->value();
         value = value + " - " + QString::number(-1 * ui->Other_Buffs->value());
     }
 
-    // if the player is damaged and wounded-penalty is to be applied
+        // if the player is damaged and wounded-penalty is to be applied
     if (ui->value_health->value() < 5) {
         int helth = -1 *(ui->value_health->value() - 5);
         value = value + " - " + QString::number(helth);
@@ -171,6 +165,7 @@ QString MainWindow::getModifiers()
 }
 
 //a multitasker.
+//deprecated.
 void MainWindow::onSkillClicked()
 {  
     //Deprecated
@@ -194,7 +189,7 @@ void MainWindow::onSkillClicked()
                ui->Commandline->setText("!r " + getBaseStat(le) + " + " + le->text() + " + 1d10e1e10" + getModifiers());
                return;
            }
-           ui->Commandline->setText("!r " + getBaseStat(le) + " + 1d10e1e10" + getModifiers());
+           ui->Commandline->setText("!r " + getBaseStat(le) + " + " + " + 1d10e1e10" + getModifiers());
            return;
        }
     }*/
@@ -202,9 +197,24 @@ void MainWindow::onSkillClicked()
     qDebug() << "boop.";
 }
 
-void MainWindow::onCellClicked(int index)
+void MainWindow::onCellClicked(QTableWidget * t, int index)
 {
-    qDebug() << index << "boop.";
+    QString parent = t->parentWidget()->parentWidget()->objectName(); //amazing
+    qDebug() << "parent: " << parent;
+    qDebug() << "skill:  " << t->verticalHeaderItem(index)->text();
+    QString value = t->item(index, 0)->text();
+
+    if (parent == "SKILLS") {
+        if (value != nullptr) { // check if skill has any points allocated
+            ui->Commandline->setText("!r " + getBaseStat(t) + " + " + value + " + 1d10e1e10" + getModifiers());
+            return;
+        }
+        ui->Commandline->setText("!r " + getBaseStat(t) + " + " + "1d10e1e10" + getModifiers());
+        return;
+    } else if (parent == "Stats_tab1") {
+        ui->Commandline->setText("!r " + value + " + 1d10e1e10" + getModifiers());
+        return;
+    }
 }
 
 // copy the whole string to clipboard to paste it on Discord.
@@ -257,7 +267,7 @@ void MainWindow::resetLuck()
 //UHHHH
 void MainWindow::saveTo()
 {
-    QString fileName = QFileDialog::getSaveFileName(this,
+    /*QString fileName = QFileDialog::getSaveFileName(this,
                                                     tr("Save Character Sheet"), "",
                                                     tr("Character Sheet (*.txt);;All Files(*)"));
     if (fileName.isEmpty())
@@ -271,7 +281,46 @@ void MainWindow::saveTo()
         QDataStream out(&file);
         out.setVersion(QDataStream::Qt_DefaultCompiledVersion);
         out << savingValues;
+    }*/
+    qDebug()<< "AHA!";
+
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    tr("Save Character Sheet"), "",
+                                                    tr("*.csv;;All Files(*)"));
+    if (fileName.isEmpty())
+        return;
+    else {
+        QFile file(fileName);
+        QDataStream data( &file );
+        QStringList strList;
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::information(this, tr("Unable to open file."), file.errorString());
+            return;
+        } else {
+            foreach(QTableWidget* t, tableList) {
+                for( int r = 0; r < t->rowCount(); ++r )
+                {
+                    strList.clear();
+                    for( int c = 0; c < t->columnCount(); ++c )
+                    {
+                        strList <<
+                                "\" " +
+                                t->horizontalHeaderItem(c)->data(Qt::DisplayRole).toString() +
+                                "\" ";
+                    }
+                    data << strList.join( ";" )+"\n";
+                }
+            }
+
+            QDataStream out(&file);
+            out << data;
+
+            file.close();
+        }
     }
+    // [Save to file] (header file <QFile> needed)
+    // .csv
+
 }
 
 // UHHHHHHHHH
